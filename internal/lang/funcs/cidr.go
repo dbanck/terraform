@@ -14,6 +14,7 @@ import (
 // CidrHostFunc contructs a function that calculates a full host IP address
 // within a given IP network address prefix.
 var CidrHostFunc = function.New(&function.Spec{
+	Description: descriptionList["cidrhost"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "prefix",
@@ -47,6 +48,7 @@ var CidrHostFunc = function.New(&function.Spec{
 // CidrNetmaskFunc contructs a function that converts an IPv4 address prefix given
 // in CIDR notation into a subnet mask address.
 var CidrNetmaskFunc = function.New(&function.Spec{
+	Description: descriptionList["cidrnetmask"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "prefix",
@@ -71,6 +73,7 @@ var CidrNetmaskFunc = function.New(&function.Spec{
 // CidrSubnetFunc contructs a function that calculates a subnet address within
 // a given IP network address prefix.
 var CidrSubnetFunc = function.New(&function.Spec{
+	Description: descriptionList["cidrsubnet"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "prefix",
@@ -113,6 +116,7 @@ var CidrSubnetFunc = function.New(&function.Spec{
 // CidrSubnetsFunc is similar to CidrSubnetFunc but calculates many consecutive
 // subnet addresses at once, rather than just a single subnet extension.
 var CidrSubnetsFunc = function.New(&function.Spec{
+	Description: descriptionList["cidrsubnets"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "prefix",

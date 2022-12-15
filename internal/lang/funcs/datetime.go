@@ -10,8 +10,9 @@ import (
 
 // TimestampFunc constructs a function that returns a string representation of the current date and time.
 var TimestampFunc = function.New(&function.Spec{
-	Params: []function.Parameter{},
-	Type:   function.StaticReturnType(cty.String),
+	Description: descriptionList["timestamp"].Description,
+	Params:      []function.Parameter{},
+	Type:        function.StaticReturnType(cty.String),
 	Impl: func(args []cty.Value, retType cty.Type) (cty.Value, error) {
 		return cty.StringVal(time.Now().UTC().Format(time.RFC3339)), nil
 	},
@@ -46,6 +47,7 @@ var TimeAddFunc = function.New(&function.Spec{
 
 // TimeCmpFunc is a function that compares two timestamps.
 var TimeCmpFunc = function.New(&function.Spec{
+	Description: descriptionList["timecmp"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "timestamp_a",

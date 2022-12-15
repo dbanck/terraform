@@ -100,6 +100,7 @@ func MakeToFunc(wantTy cty.Type) function.Function {
 // value is marked to allow us to limit the use of this function at the moment
 // to only a few supported use cases.
 var TypeFunc = function.New(&function.Spec{
+	Description: descriptionList["type"].Description,
 	Params: []function.Parameter{
 		{
 			Name:             "value",

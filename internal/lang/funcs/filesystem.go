@@ -153,7 +153,8 @@ func MakeTemplateFileFunc(baseDir string, funcsCb func() map[string]function.Fun
 	}
 
 	return function.New(&function.Spec{
-		Params: params,
+		Description: descriptionList["templatefile"].Description,
+		Params:      params,
 		Type: func(args []cty.Value) (cty.Type, error) {
 			if !(args[0].IsKnown() && args[1].IsKnown()) {
 				return cty.DynamicPseudoType, nil
@@ -331,6 +332,7 @@ func MakeFileSetFunc(baseDir string) function.Function {
 // BasenameFunc constructs a function that takes a string containing a filesystem path
 // and removes all except the last portion from it.
 var BasenameFunc = function.New(&function.Spec{
+	Description: descriptionList["basename"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "path",
@@ -346,6 +348,7 @@ var BasenameFunc = function.New(&function.Spec{
 // DirnameFunc constructs a function that takes a string containing a filesystem path
 // and removes the last portion from it.
 var DirnameFunc = function.New(&function.Spec{
+	Description: descriptionList["dirname"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "path",
@@ -360,6 +363,7 @@ var DirnameFunc = function.New(&function.Spec{
 
 // AbsPathFunc constructs a function that converts a filesystem path to an absolute path
 var AbsPathFunc = function.New(&function.Spec{
+	Description: descriptionList["abspath"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "path",
@@ -375,6 +379,7 @@ var AbsPathFunc = function.New(&function.Spec{
 
 // PathExpandFunc constructs a function that expands a leading ~ character to the current user's home directory.
 var PathExpandFunc = function.New(&function.Spec{
+	Description: descriptionList["pathexpand"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "path",

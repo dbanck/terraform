@@ -11,6 +11,7 @@ import (
 // StartsWithFunc constructs a function that checks if a string starts with
 // a specific prefix using strings.HasPrefix
 var StartsWithFunc = function.New(&function.Spec{
+	Description: descriptionList["startswith"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",
@@ -37,6 +38,7 @@ var StartsWithFunc = function.New(&function.Spec{
 // EndsWithFunc constructs a function that checks if a string ends with
 // a specific suffix using strings.HasSuffix
 var EndsWithFunc = function.New(&function.Spec{
+	Description: descriptionList["endswith"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",
@@ -63,6 +65,7 @@ var EndsWithFunc = function.New(&function.Spec{
 // ReplaceFunc constructs a function that searches a given string for another
 // given substring, and replaces each occurence with a given replacement string.
 var ReplaceFunc = function.New(&function.Spec{
+	Description: descriptionList["replace"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",

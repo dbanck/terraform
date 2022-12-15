@@ -24,8 +24,9 @@ import (
 )
 
 var UUIDFunc = function.New(&function.Spec{
-	Params: []function.Parameter{},
-	Type:   function.StaticReturnType(cty.String),
+	Description: descriptionList["uuid"].Description,
+	Params:      []function.Parameter{},
+	Type:        function.StaticReturnType(cty.String),
 	Impl: func(args []cty.Value, retType cty.Type) (ret cty.Value, err error) {
 		result, err := uuid.GenerateUUID()
 		if err != nil {
@@ -36,6 +37,7 @@ var UUIDFunc = function.New(&function.Spec{
 })
 
 var UUIDV5Func = function.New(&function.Spec{
+	Description: descriptionList["uuidv5"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "namespace",
@@ -90,6 +92,7 @@ func MakeFileBase64Sha512Func(baseDir string) function.Function {
 
 // BcryptFunc constructs a function that computes a hash of the given string using the Blowfish cipher.
 var BcryptFunc = function.New(&function.Spec{
+	Description: descriptionList["bcrypt"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",
@@ -137,6 +140,7 @@ func MakeFileMd5Func(baseDir string) function.Function {
 
 // RsaDecryptFunc constructs a function that decrypts an RSA-encrypted ciphertext.
 var RsaDecryptFunc = function.New(&function.Spec{
+	Description: descriptionList["rsadecrypt"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "ciphertext",

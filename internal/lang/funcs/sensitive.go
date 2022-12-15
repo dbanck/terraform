@@ -9,6 +9,7 @@ import (
 // SensitiveFunc returns a value identical to its argument except that
 // Terraform will consider it to be sensitive.
 var SensitiveFunc = function.New(&function.Spec{
+	Description: descriptionList["sensitive"].Description,
 	Params: []function.Parameter{
 		{
 			Name:             "value",
@@ -33,6 +34,7 @@ var SensitiveFunc = function.New(&function.Spec{
 // NonsensitiveFunc takes a sensitive value and returns the same value without
 // the sensitive marking, effectively exposing the value.
 var NonsensitiveFunc = function.New(&function.Spec{
+	Description: descriptionList["nonsensitive"].Description,
 	Params: []function.Parameter{
 		{
 			Name:             "value",

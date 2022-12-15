@@ -16,6 +16,7 @@ import (
 
 // Base64DecodeFunc constructs a function that decodes a string containing a base64 sequence.
 var Base64DecodeFunc = function.New(&function.Spec{
+	Description: descriptionList["base64decode"].Description,
 	Params: []function.Parameter{
 		{
 			Name:        "str",
@@ -41,6 +42,7 @@ var Base64DecodeFunc = function.New(&function.Spec{
 
 // Base64EncodeFunc constructs a function that encodes a string to a base64 sequence.
 var Base64EncodeFunc = function.New(&function.Spec{
+	Description: descriptionList["base64encode"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",
@@ -55,6 +57,7 @@ var Base64EncodeFunc = function.New(&function.Spec{
 
 // TextEncodeBase64Func constructs a function that encodes a string to a target encoding and then to a base64 sequence.
 var TextEncodeBase64Func = function.New(&function.Spec{
+	Description: descriptionList["textencodebase64"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "string",
@@ -98,6 +101,7 @@ var TextEncodeBase64Func = function.New(&function.Spec{
 
 // TextDecodeBase64Func constructs a function that decodes a base64 sequence to a target encoding.
 var TextDecodeBase64Func = function.New(&function.Spec{
+	Description: descriptionList["textdecodebase64"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "source",
@@ -145,6 +149,7 @@ var TextDecodeBase64Func = function.New(&function.Spec{
 // Base64GzipFunc constructs a function that compresses a string with gzip and then encodes the result in
 // Base64 encoding.
 var Base64GzipFunc = function.New(&function.Spec{
+	Description: descriptionList["base64gzip"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",
@@ -172,6 +177,7 @@ var Base64GzipFunc = function.New(&function.Spec{
 
 // URLEncodeFunc constructs a function that applies URL encoding to a given string.
 var URLEncodeFunc = function.New(&function.Spec{
+	Description: descriptionList["urlencode"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "str",

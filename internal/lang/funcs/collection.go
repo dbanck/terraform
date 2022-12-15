@@ -14,6 +14,7 @@ import (
 )
 
 var LengthFunc = function.New(&function.Spec{
+	Description: descriptionList["length"].Description,
 	Params: []function.Parameter{
 		{
 			Name:             "value",
@@ -62,6 +63,7 @@ var LengthFunc = function.New(&function.Spec{
 // AllTrueFunc constructs a function that returns true if all elements of the
 // list are true. If the list is empty, return true.
 var AllTrueFunc = function.New(&function.Spec{
+	Description: descriptionList["alltrue"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "list",
@@ -91,6 +93,7 @@ var AllTrueFunc = function.New(&function.Spec{
 // AnyTrueFunc constructs a function that returns true if any element of the
 // list is true. If the list is empty, return false.
 var AnyTrueFunc = function.New(&function.Spec{
+	Description: descriptionList["anytrue"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "list",
@@ -127,7 +130,8 @@ var AnyTrueFunc = function.New(&function.Spec{
 // stdlib and modified so that it returns the first *non-empty* non-null element
 // from a sequence, instead of merely the first non-null.
 var CoalesceFunc = function.New(&function.Spec{
-	Params: []function.Parameter{},
+	Description: descriptionList["coalesce"].Description,
+	Params:      []function.Parameter{},
 	VarParam: &function.Parameter{
 		Name:             "vals",
 		Type:             cty.DynamicPseudoType,
@@ -168,6 +172,7 @@ var CoalesceFunc = function.New(&function.Spec{
 
 // IndexFunc constructs a function that finds the element index for a given value in a list.
 var IndexFunc = function.New(&function.Spec{
+	Description: descriptionList["index"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "list",
@@ -212,6 +217,7 @@ var IndexFunc = function.New(&function.Spec{
 
 // LookupFunc constructs a function that performs dynamic lookups of map types.
 var LookupFunc = function.New(&function.Spec{
+	Description: descriptionList["lookup"].Description,
 	Params: []function.Parameter{
 		{
 			Name:        "inputMap",
@@ -320,6 +326,7 @@ var LookupFunc = function.New(&function.Spec{
 // subset of elements from one list whose indexes match the corresponding
 // indexes of values in another list.
 var MatchkeysFunc = function.New(&function.Spec{
+	Description: descriptionList["matchkeys"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "values",
@@ -403,6 +410,7 @@ var MatchkeysFunc = function.New(&function.Spec{
 // OneFunc returns either the first element of a one-element list, or null
 // if given a zero-element list.
 var OneFunc = function.New(&function.Spec{
+	Description: descriptionList["one"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "list",
@@ -480,6 +488,7 @@ var OneFunc = function.New(&function.Spec{
 // SumFunc constructs a function that returns the sum of all
 // numbers provided in a list
 var SumFunc = function.New(&function.Spec{
+	Description: descriptionList["sum"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "list",
@@ -549,6 +558,7 @@ var SumFunc = function.New(&function.Spec{
 // TransposeFunc constructs a function that takes a map of lists of strings and
 // swaps the keys and values to produce a new map of lists of strings.
 var TransposeFunc = function.New(&function.Spec{
+	Description: descriptionList["transpose"].Description,
 	Params: []function.Parameter{
 		{
 			Name: "values",
@@ -605,7 +615,8 @@ var TransposeFunc = function.New(&function.Spec{
 //
 // This function is deprecated in Terraform v0.12
 var ListFunc = function.New(&function.Spec{
-	Params: []function.Parameter{},
+	Description: descriptionList["list"].Description,
+	Params:      []function.Parameter{},
 	VarParam: &function.Parameter{
 		Name:             "vals",
 		Type:             cty.DynamicPseudoType,
@@ -626,7 +637,8 @@ var ListFunc = function.New(&function.Spec{
 //
 // This function is deprecated in Terraform v0.12
 var MapFunc = function.New(&function.Spec{
-	Params: []function.Parameter{},
+	Description: descriptionList["map"].Description,
+	Params:      []function.Parameter{},
 	VarParam: &function.Parameter{
 		Name:             "vals",
 		Type:             cty.DynamicPseudoType,
