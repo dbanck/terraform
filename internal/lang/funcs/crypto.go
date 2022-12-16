@@ -100,8 +100,9 @@ var BcryptFunc = function.New(&function.Spec{
 		},
 	},
 	VarParam: &function.Parameter{
-		Name: "cost",
-		Type: cty.Number,
+		Description: descriptionList["bcrypt"].ParamDescription[1],
+		Name:        "cost",
+		Type:        cty.Number,
 	},
 	Type: function.StaticReturnType(cty.String),
 	Impl: func(args []cty.Value, retType cty.Type) (ret cty.Value, err error) {
