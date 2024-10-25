@@ -70,14 +70,18 @@ var (
 func (n *NodePlannableResourceInstance) Execute(ctx EvalContext, op walkOperation) tfdiags.Diagnostics {
 	addr := n.ResourceInstanceAddr()
 
+	var diags tfdiags.Diagnostics
+	// TODO: Find better place
+	diags = diags.Append(diags, n.validateUsageOfDeprecatedOutputs(ctx))
+
 	// Eval info is different depending on what kind of resource this is
 	switch addr.Resource.Resource.Mode {
 	case addrs.ManagedResourceMode:
-		return n.managedResourceExecute(ctx)
+		return diags.Append(diags, n.managedResourceExecute(ctx))
 	case addrs.DataResourceMode:
-		return n.dataResourceExecute(ctx)
+		return diags.Append(diags, n.dataResourceExecute(ctx))
 	case addrs.EphemeralResourceMode:
-		return n.ephemeralResourceExecute(ctx)
+		return diags.Append(diags, n.ephemeralResourceExecute(ctx))
 	default:
 		panic(fmt.Errorf("unsupported resource mode %s", n.Config.Mode))
 	}

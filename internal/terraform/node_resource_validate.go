@@ -468,6 +468,8 @@ func (n *NodeValidatableResource) validateResource(ctx EvalContext) tfdiags.Diag
 		diags = diags.Append(resp.Diagnostics.InConfigBody(n.Config.Config, n.Addr.String()))
 	}
 
+	diags = diags.Append(diags, n.validateUsageOfDeprecatedOutputs(ctx))
+
 	return diags
 }
 

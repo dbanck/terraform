@@ -545,6 +545,30 @@ func (n *NodeAbstractResource) readResourceInstanceStateDeposed(ctx EvalContext,
 	return obj, diags
 }
 
+func (n *NodeAbstractResource) validateUsageOfDeprecatedOutputs(ctx EvalContext) tfdiags.Diagnostics {
+	var diags tfdiags.Diagnostics
+
+	fmt.Printf("\n\t n.References() --> %#v \n", n.References())
+	for _, ref := range n.References() {
+		fmt.Printf("\n\t ref --> %#v \n", ref)
+		if out, ok := ref.Subject.(addrs.ModuleCallInstanceOutput); ok {
+			fmt.Printf("\n\t out --> %#v \n", out)
+
+			// TODO: Find the configuration for the output
+			// Check if the output is deprecated and emit this diagnostic
+
+			// diags = diags.Append(&hcl.Diagnostic{
+			// 			Severity: hcl.DiagWarning,
+			// 			Summary:  "Usage of deprecated output",
+			// 			Detail:   n.Config.DeprecatedMessage,
+			// 			Subject:  ref.SourceRange.ToHCL().Ptr(),
+			// 		})
+		}
+	}
+
+	return diags
+}
+
 // graphNodesAreResourceInstancesInDifferentInstancesOfSameModule is an
 // annoyingly-task-specific helper function that returns true if and only if
 // the following conditions hold:

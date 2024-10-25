@@ -346,6 +346,9 @@ type Output struct {
 	Sensitive   bool
 	Ephemeral   bool
 
+	Deprecated        bool
+	DeprecatedMessage string
+
 	Preconditions []*CheckRule
 
 	DescriptionSet bool
@@ -400,6 +403,22 @@ func decodeOutputBlock(block *hcl.Block, override bool) (*Output, hcl.Diagnostic
 		valDiags := gohcl.DecodeExpression(attr.Expr, nil, &o.Ephemeral)
 		diags = append(diags, valDiags...)
 		o.EphemeralSet = true
+	}
+
+	if attr, exists := content.Attributes["deprecated"]; exists {
+		msg, msgDiags := attr.Expr.Value(nil)
+		diags = append(diags, msgDiags...)
+		if msg.Type() != cty.String || !msg.IsWhollyKnown() || msg.IsNull() {
+			diags = append(diags, &hcl.Diagnostic{
+				Severity: hcl.DiagError,
+				Summary:  "Deprecated message must be a known, non-empty string",
+				Detail:   "The deprecated argument must be a known, non-empty string.",
+				Subject:  &attr.Range,
+			})
+		} else {
+			o.DeprecatedMessage = msg.AsString()
+			o.Deprecated = true
+		}
 	}
 
 	if attr, exists := content.Attributes["depends_on"]; exists {
@@ -524,6 +543,9 @@ var outputBlockSchema = &hcl.BodySchema{
 		},
 		{
 			Name: "ephemeral",
+		},
+		{
+			Name: "deprecated",
 		},
 	},
 	Blocks: []hcl.BlockHeaderSchema{

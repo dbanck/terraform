@@ -142,6 +142,7 @@ func (n *nodeExpandPlannableResource) DynamicExpand(ctx EvalContext) (*Graph, tf
 
 	g, expandDiags := n.dynamicExpand(ctx, moduleInstances, imports)
 	diags = diags.Append(expandDiags)
+
 	return g, diags
 }
 
